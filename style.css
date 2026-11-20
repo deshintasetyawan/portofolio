@@ -87,48 +87,36 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  height: 56px;
+  min-height: 56px;
 }
 nav .logo {
   font-weight: 700;
   color: var(--text);
+  flex-shrink: 0;
 }
 nav ul {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  scrollbar-width: none;
+  overflow: visible;
   font-size: 14px;
 }
-nav ul::-webkit-scrollbar {
-  display: none;
+nav ul li {
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
 }
 nav ul a {
   position: relative;
-  padding-bottom: 4px;
+  display: inline-block;
+  padding: 4px 0;
   color: var(--muted);
   white-space: nowrap;
-}
-nav ul a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 999px;
-  transition: width 0.22s ease;
-}
-nav ul a:hover {
-  color: var(--accent);
-}
-nav ul a:hover::after {
-  width: 100%;
 }
 .hero {
   display: grid;
