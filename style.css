@@ -41,7 +41,13 @@ html {
 }
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    ellipse 80% 45% at 50% -10%,
+    color-mix(in srgb, var(--accent) 12%, transparent),
+    transparent 70%
+  );
+  background-repeat: no-repeat;
   color: var(--text);
   font:
     16px/1.65 "Segoe UI",
@@ -70,7 +76,9 @@ a {
 header {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
-  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   z-index: 9;
 }
@@ -95,11 +103,27 @@ nav ul {
   font-size: 14px;
 }
 nav ul a {
+  position: relative;
+  padding-bottom: 4px;
   color: var(--muted);
   white-space: nowrap;
 }
+nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.22s ease;
+}
 nav ul a:hover {
   color: var(--accent);
+}
+nav ul a:hover::after {
+  width: 100%;
 }
 .hero {
   display: grid;
@@ -129,7 +153,11 @@ h1 {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: var(--accent-soft);
+  background: linear-gradient(
+    145deg,
+    var(--accent-soft),
+    color-mix(in srgb, var(--accent) 22%, var(--surface))
+  );
   color: var(--accent);
   display: flex;
   align-items: center;
@@ -137,20 +165,37 @@ h1 {
   font-size: 48px;
   font-weight: 700;
   border: 3px solid var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 14%, transparent);
 }
 .btn {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 999px;
-  background: var(--accent);
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 78%, #000)
+  );
   color: var(--bg);
   font-weight: 600;
   margin-right: 8px;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 28%, transparent);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--accent) 36%, transparent);
+  opacity: 0.96;
 }
 .btn.alt {
   background: transparent;
   color: var(--accent);
   border: 1.5px solid var(--accent);
+  box-shadow: none;
+}
+.btn.alt:hover {
+  background: var(--accent-soft);
+  box-shadow: none;
 }
 section {
   padding: 48px 0;
@@ -167,11 +212,19 @@ h2 {
   margin-top: 24px;
 }
 .stat {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 16px;
   text-align: center;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 6%, transparent);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.stat:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 .stat b {
   display: block;
@@ -224,6 +277,7 @@ h2 {
 }
 .card,
 a.card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--surface);
@@ -232,6 +286,7 @@ a.card {
   padding: 20px;
   color: inherit;
   cursor: pointer;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 6%, transparent);
   transition:
     transform 0.2s,
     border-color 0.2s,
@@ -249,7 +304,7 @@ a.card {
 a.card:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 .card-cta {
   margin-top: auto;
@@ -320,11 +375,13 @@ footer {
   }
 }
 .org-wrap {
+  position: relative;
   margin-top: 16px;
   padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 12px;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 6%, transparent);
 }
 .org-label {
   font-size: 12px;
@@ -381,11 +438,18 @@ footer {
   margin: 20px 0;
 }
 .gallery figure {
+  position: relative;
   margin: 0;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 6%, transparent);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.gallery figure:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 .gallery img {
   width: 100%;
