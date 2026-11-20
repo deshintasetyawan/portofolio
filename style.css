@@ -95,12 +95,17 @@ nav .logo {
 }
 nav ul {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  gap: 14px;
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow-x: auto;
+  overflow: hidden;
+  scrollbar-width: none;
   font-size: 14px;
+}
+nav ul::-webkit-scrollbar {
+  display: none;
 }
 nav ul a {
   position: relative;
@@ -180,7 +185,10 @@ h1 {
   font-weight: 600;
   margin-right: 8px;
   box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 28%, transparent);
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    opacity 0.2s;
 }
 .btn:hover {
   transform: translateY(-2px);
@@ -219,7 +227,10 @@ h2 {
   padding: 16px;
   text-align: center;
   box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 6%, transparent);
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 .stat:hover {
   transform: translateY(-2px);
@@ -445,7 +456,10 @@ footer {
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 6%, transparent);
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 .gallery figure:hover {
   border-color: var(--accent);
